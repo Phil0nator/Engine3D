@@ -1,0 +1,1 @@
+g++ testing.cpp -lGL -lGLU -lglut -o etest.out && ./etest.out
