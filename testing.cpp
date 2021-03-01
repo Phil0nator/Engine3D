@@ -1,5 +1,9 @@
 #include "Engine3D.hpp"
 
+using Engine3D::Math::Point;
+using Engine3D::Math::Quaternion;
+using std::cout;
+using std::endl;
 
 
 int main(int argc, char** argv){
@@ -10,5 +14,12 @@ int main(int argc, char** argv){
     std::cout << r << std::endl;
     std::cout << r.rotate(1.57079633 ,Engine3D::Math::Vector(0,0,1)) << std::endl;
     std::cout << (p*d)/(p+d) << std::endl;
+    std::cout << std::endl;
+    
+
+    Quaternion test = Quaternion(1,2,3,4);
+    Quaternion t2 = Quaternion(2,5,6,4);
+    cout << test*t2 << endl;
+
     return 0;
 }

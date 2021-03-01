@@ -123,6 +123,26 @@ void Point::normalize(){
     y/=max;
     z/=max;
 }
+
+void Point::apply( const Quaternion& q ){
+
+    // quaternion * this
+    double ix = q.w * x + q.y * z - q.z * y;
+    double iy = q.w * y + q.z * x - q.x * z;
+    double iz = q.w * z + q.x * y - q.y * x;
+    double iw = -q.x * x - q.y * y - q.z* z;
+
+    // resultant * q.inverse()
+    x = ix * q.w + iw * - q.x + iy * - q.z - iz * - q.y;
+    y = iy * q.w + iw * - q.y + iz * - q.x - ix * - q.z;
+    z = iz * q.w + iw * - q.z + ix * - q.y - iy * - q.x;
+}
+
+
 Point Point::copy() const {
     return Point(x,y,z);
+}
+
+double Point::magnitude(){
+    return sqrt((x*x)+(y*y)+(z*z));
 }

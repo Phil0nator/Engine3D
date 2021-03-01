@@ -108,11 +108,16 @@ class Point{
      * Normalize this point
      */
     void normalize();
+
+    void apply( const Quaternion& q );
+
     /**
      * Create a copy of this point
      */
     Point copy() const;
     
+    double magnitude();
+
     /**
      * Standard conversion to an std::array
      */
@@ -127,4 +132,3 @@ class Point{
 std::ostream &operator<<(std::ostream &os, Point const &m){
     return os << "[ " << m.x << ", " << m.y << ", " << m.z << " ]";
 }
-#include "Point.cpp"
