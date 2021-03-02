@@ -95,6 +95,8 @@ class Quaternion{
      */
     void reset();
 
+    void multiply( const Quaternion& other );
+
     /**
      * Get the dot product with other
      * @param other other quaternion

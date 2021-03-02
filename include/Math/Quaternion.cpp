@@ -27,6 +27,16 @@ void Quaternion::set( const Vector& xyz, double w ){
     this->w = w;
 }
 void Quaternion::set( double angle, const Vector& axis ){
+    
+    double halfAngle = angle/2;
+    double S = sin( halfAngle );
+
+    x = axis.x*S;
+    y = axis.y*S;
+    z = axis.z*S;
+    w = cos( halfAngle );
+
+
 
 }
 void Quaternion::set( const RotationMatrix& matrix ){
@@ -97,6 +107,14 @@ void Quaternion::set( const std::array<double, 4> arr ){
     w = arr[3];
 }
 
+void Quaternion::multiply( const Quaternion& other ) {
+    set(
+        (x*other.w + y*other.z - z*other.y + w * other.x),
+        (-x*other.z + y*other.w + z*other.x + w*other.y),
+        (x*other.y - y * other.x + z * other.w + w * other.z),
+        (-x*other.x - y*other.y - z*other.z + w*other.w )
+    );
+}
 
 double Quaternion::magnitude(){
     return sqrt(x*x+y*y+z*z+w*w);

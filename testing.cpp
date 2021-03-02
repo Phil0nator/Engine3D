@@ -4,22 +4,37 @@ using Engine3D::Math::Point;
 using Engine3D::Math::Quaternion;
 using std::cout;
 using std::endl;
+using namespace Engine3D;
+using namespace Core;
+
+Scene myScene = Scene(Color(0.5,1,0.5));
+Camera myCamera = Camera();
+Shader myShader;
+
+void display(){
+    myScene.render(myCamera);
+    glutSwapBuffers();
+
+
+}
+
 
 
 int main(int argc, char** argv){
-    Engine3D::Math::Point p(1.3,2.0,3.0);
-    Engine3D::Math::Point d(2.6,7.9,32.5);
-    Engine3D::Math::RotationMatrix r({1.0,0.0,0.0}, {1.0,0.0,0.0}, {0.0,0.0,1.0});
-    Engine3D::Math::RotationMatrix r2({1.0,0.0,0.0}, {0.0,1.0,0.0}, {1.0,1.0,1.0});
-    std::cout << r << std::endl;
-    std::cout << r.rotate(1.57079633 ,Engine3D::Math::Vector(0,0,1)) << std::endl;
-    std::cout << (p*d)/(p+d) << std::endl;
-    std::cout << std::endl;
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE|GLUT_DEPTH);    // Use single color buffer and no depth buffer.
+    glutInitWindowSize(500,500);                    // Size of display area, in pixels.
+    glutInitWindowPosition(100,100);                // Location of window in screen coordinates.
+    glutCreateWindow("3D Engine");                  // Parameter is window title.
+    glutDisplayFunc(display);                       // Called when the window needs to be redrawn.
+    gladLoadGL();                                   // Set up shader compiler
     
-
-    Quaternion test = Quaternion(1,2,3,4);
-    Quaternion t2 = Quaternion(2,5,6,4);
-    cout << test*t2 << endl;
-
+    myShader = Shader("include/OpenGL/BasicShaders/BasicVertexShader.glsl", "include/OpenGL/BasicShaders/BasicFragmentShader.glsl");
+    
+    
+    
+    glutMainLoop(); // Run the event loop!  This function does not return.
+                    // Program ends when user closes the window.
+    
     return 0;
 }

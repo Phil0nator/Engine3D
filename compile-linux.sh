@@ -1,1 +1,1 @@
-g++ testing.cpp -Iinclude -lGL -lGLU -lglut -o etest.out && ./etest.out
+g++ testing.cpp include/glad/src/glad.c -Iinclude -Iinclude/glad/include -lGL -lGLU -lglut -ldl -g -o etest.out && ./etest.out
