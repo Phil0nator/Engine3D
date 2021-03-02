@@ -1,6 +1,1 @@
-
-namespace Geometry{
-
-
-
-};
+#include "Box.hpp"

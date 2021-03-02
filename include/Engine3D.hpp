@@ -14,11 +14,30 @@
 #include <GL/glut.h>
 
 namespace Engine3D{
+
+    namespace Core{
+        class Material;
+        class Object3D;
+        class Movable;
+        class Rotatable;
+        class Pointable;
+        class Scene;
+    };
+
+    namespace Math{
+
+        class Point;
+        class Quaternion;
+        class RotationMatrix;
+
+    };
+
+
     #include "Math/Math.hpp"
-    #include "Geometry/Geometry.hpp"
     #include "Core/Properties.hpp"
     #include "OpenGL/GLTypes.hpp"
     #include "Core/Core.hpp"
+    #include "Geometry/Geometry.hpp"
 
 
 

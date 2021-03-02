@@ -1,4 +1,4 @@
-struct Material{
+struct GLMaterial{
 
     Color ambient;
     Color diffuse;

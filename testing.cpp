@@ -29,9 +29,17 @@ int main(int argc, char** argv){
     glutDisplayFunc(display);                       // Called when the window needs to be redrawn.
     gladLoadGL();                                   // Set up shader compiler
     
-    myShader = Shader("include/OpenGL/BasicShaders/BasicVertexShader.glsl", "include/OpenGL/BasicShaders/BasicFragmentShader.glsl");
-    
-    
+    myShader = Shader("include/OpenGL/BasicShaders/BasicVertexShader.glsl", 
+                    "include/OpenGL/BasicShaders/BasicFragmentShader.glsl");
+    ShaderMaterial mat;
+    mat.shader = myShader;
+
+    Mesh cube = BoxGeometry(Point(), Point());
+    cube.mat = &mat;
+
+    myScene.addObject(&cube);
+
+
     
     glutMainLoop(); // Run the event loop!  This function does not return.
                     // Program ends when user closes the window.

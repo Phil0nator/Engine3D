@@ -1,6 +1,6 @@
 class Light : public Core::Movable {
     public:
-    Material properties;
+    GLMaterial properties;
 
 };
 

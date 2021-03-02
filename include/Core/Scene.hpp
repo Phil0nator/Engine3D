@@ -2,7 +2,8 @@ class Scene{
 
 
     private:
-        //vector<Object3D*> objects;
+        std::vector<Object3D*> objects;
+        std::vector<Light*> lights;
 
     public:
         GLuint target = -1;
@@ -14,7 +15,7 @@ class Scene{
 
 
         void render(Camera camera);
-
-
+        void addObject( Object3D* obj ){ objects.push_back(obj); }
+        void addLight( Light* light ){ lights.push_back(light); }
 };
 
